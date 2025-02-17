@@ -1,0 +1,57 @@
+<h1>Borrowing History for <%= @book.title %></h1>
+
+<table class="table table-striped">
+    <thead>
+          <tr>
+                  <th>Borrower Name</th>
+                        <th>Borrowed At</th>
+                              <th>Returned At</th>
+                                  </tr>
+                                    </thead>
+                                      <tbody>
+                                            <% @borrowings.each do |borrowing| %>
+                                                    <tr>
+                                                              <td><%= borrowing.borrower_name %></td>
+                                                                      <td><%= borrowing.borrowed_at.strftime("%d-%m-%Y %H:%M") %></td>
+                                                                              <td>
+                                                                                          <% if borrowing.returned_at.present? %>
+                                                                                                        <%= borrowing.returned_at.strftime("%d-%m-%Y %H:%M") %>
+                                                                                                                  <% else %>
+                                                                                                                                <span class="text-danger">Not Returned</span>
+                                                                                                                                          <% end %>
+                                                                                                                                                  </td>
+                                                                                                                                                        </tr>
+                                                                                                                                                            <% end %>
+                                                                                                                                                              </tbody>
+</table>
+
+<%= link_to 'Back to Books', books_path, class: 'btn btn-secondary' %>
+<h1>Borrowing History for <%= @book.title %></h1>
+
+<table class="table table-striped">
+    <thead>
+          <tr>
+                  <th>Borrower Name</th>
+                        <th>Borrowed At</th>
+                              <th>Returned At</th>
+                                  </tr>
+                                    </thead>
+                                      <tbody>
+                                            <% @borrowings.each do |borrowing| %>
+                                                    <tr>
+                                                              <td><%= borrowing.borrower_name %></td>
+                                                                      <td><%= borrowing.borrowed_at.strftime("%d-%m-%Y %H:%M") %></td>
+                                                                              <td>
+                                                                                          <% if borrowing.returned_at.present? %>
+                                                                                                        <%= borrowing.returned_at.strftime("%d-%m-%Y %H:%M") %>
+                                                                                                                  <% else %>
+                                                                                                                                <span class="text-danger">Not Returned</span>
+                                                                                                                                          <% end %>
+                                                                                                                                                  </td>
+                                                                                                                                                        </tr>
+                                                                                                                                                            <% end %>
+                                                                                                                                                              </tbody>
+</table>
+
+<%= link_to 'Back to Books', books_path, class: 'btn btn-secondary' %>
+

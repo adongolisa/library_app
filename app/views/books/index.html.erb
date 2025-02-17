@@ -1,0 +1,53 @@
+<h1>Books</h1>
+
+<%= link_to 'New Book', new_book_path, class: 'btn btn-primary mb-3' %>
+
+<table class="table table-striped">
+    <thead>
+          <tr>
+                  <th>Title</th>
+                        <th>Author</th>
+                              <th>Published Year</th>
+                                    <th>Status</th>
+                                          <th>Actions</th>
+                                              </tr>
+                                                </thead>
+                                                  <tbody>
+                                                        <% @books.each do |book| %>
+                                                                <tr>
+                                                                          <td><%= book.title %></td>
+                                                                                  <td><%= book.author %></td>
+                                                                                          <td><%= book.published_year %></td>
+                                                                                                  <td>
+                                                                                                              <% if book.borrowings.where(returned_at: nil).any? %>
+                                                                                                                            Borrowed by <strong><%= book.borrowings.where(returned_at: nil).last.borrower_name %></strong>
+                                                                                                                                      <% else %>
+                                                                                                                                                    Available
+                                                                                                                                                              <% end %>
+                                                                                                                                                                      </td>
+                                                                                                                                                                              <td>
+                                                                                                                                                                                          <%= link_to 'Show', book, class: 'btn btn-info btn-sm' %>
+                                                                                                                                                                                                    <%= link_to 'Edit', edit_book_path(book), class: 'btn btn-warning btn-sm' %>
+                                                                                                                                                                                                              <%= link_to 'Delete', book_path(book), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'%>
+
+                                                                                                                                                                                                                        <% if book.borrowings.where(returned_at: nil).any? %>
+                                                                                                                                                                                                                                      <!-- Return Book Button -->
+                                                                                                                                                                                                                                                  <%= button_to "Return Book", return_book_book_path(book), method: :patch, data: { confirm: "Return this book?" }, class: "btn btn-success btn-sm" %>
+                                                                                                                                                                                                                                                            <% else %>
+                                                                                                                                                                                                                                                                          <!-- Borrow Book Form -->
+                                                                                                                                                                                                                                                                                      <%= form_with url: borrow_book_path(book), method: :post, class: "d-inline" do |f| %>
+                                                                                                                                                                                                                                                                                                      <div class="input-group">
+                                                                                                                                                                                                                                                                                                                        <%= f.text_field :borrower_name, placeholder: "Enter Borrower's Name", class: "form-control" %>
+                                                                                                                                                                                                                                                                                                                                        <%= f.submit "Borrow", class: "btn btn-primary btn-sm" %>
+                                                                                                                                                                                                                                                                                                                                                      </div>
+                                                                                                                                                                                                                                                                                                                                                                  <% end %>
+                                                                                                                                                                                                                                                                                                                                                                            <% end %>
+
+                                                                                                                                                                                                                                                                                                                                                                                      <!-- View Borrowing History -->
+                                                                                                                                                                                                                                                                                                                                                                                                <%= link_to "View History", history_book_path(book), class: "btn btn-secondary btn-sm" %>
+                                                                                                                                                                                                                                                                                                                                                                                                        </td>
+                                                                                                                                                                                                                                                                                                                                                                                                              </tr>
+                                                                                                                                                                                                                                                                                                                                                                                                                  <% end %>
+                                                                                                                                                                                                                                                                                                                                                                                                                    </tbody>
+</table>
+

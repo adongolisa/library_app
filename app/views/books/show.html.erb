@@ -1,0 +1,41 @@
+<h1><%= @book.title.presence || 'Unknown Title' %></h1>
+
+<p>
+  <strong>Author:</strong>
+    <%= @book.author.presence || 'Unknown Author' %>
+</p>
+
+<p>
+  <strong>Published Year:</strong>
+    <%= @book.published_year.presence || 'N/A' %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+    <%= @book.status.presence || 'Unknown' %>
+</p>
+
+<%= link_to 'Edit', edit_book_path(@book), class: 'btn btn-warning' %>
+<%= link_to 'Back', books_path, class: 'btn btn-secondary' %>
+
+<h2 class="mt-4">Borrowing History</h2>
+
+<table class="table table-striped">
+    <thead>
+          <tr>
+                  <th>Borrower Name</th>
+                        <th>Borrowed At</th>
+                              <th>Returned At</th>
+                                  </tr>
+                                    </thead>
+                                      <tbody>
+                                            <% @borrowings.each do |borrowing| %>
+                                                    <tr>
+                                                              <td><%= borrowing.borrower_name.presence || 'Unknown Borrower' %></td>
+                                                                      <td><%= borrowing.borrowed_at&.strftime('%Y-%m-%d %H:%M:%S') || 'N/A' %></td>
+                                                                              <td><%= borrowing.returned_at&.strftime('%Y-%m-%d %H:%M:%S') || 'Not returned yet' %></td>
+                                                                                    </tr>
+                                                                                        <% end %>
+                                                                                          </tbody>
+</table>
+
