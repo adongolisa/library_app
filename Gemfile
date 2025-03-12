@@ -6,7 +6,7 @@
  ruby '3.2.2' # Specify your Ruby version here
 
  # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
- gem 'rails', '~>8.0.1'
+ gem 'rails', '~>8.0.2'
 
  # Usesqlite3 database
  gem 'sqlite3', '~> 2.1'
