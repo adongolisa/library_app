@@ -38,7 +38,7 @@
  # gem 'simple_form'
 
  # Use RuboCop for linting and style enforcement
- gem 'rubocop', '~> 1.56', require: false
+ gem 'rubocop', '~> 1.74', require: false
 
  # Use RSpec for testing (optional, if you prefer RSpec over MiniTest)
  # gem 'rspec-rails', '~> 6.0'
