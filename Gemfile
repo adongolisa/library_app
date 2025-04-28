@@ -91,7 +91,7 @@
                                          gem 'webdrivers'
 
                                            # Use Shoulda Matchers for additional test matchers
-                                             gem 'shoulda-matchers', '~> 6.0'
+                                             gem 'shoulda-matchers', '~> 6.5'
                                              end
 
                                              # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
